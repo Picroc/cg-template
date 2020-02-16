@@ -32,7 +32,7 @@ int ObjParser::Parse()
 	while (std::getline(obj_file, line)) {
 		if (line.rfind("v ", 0) == 0) {
 			std::vector<std::string> vertex_data = Split(line, ' ');
-			float4 vertex{ 0, 0, 0,1 };
+			float4 vertex{ 0, 0, 0, 1 };
 			for (int i = 1; i < vertex_data.size(); i++) {
 				vertex[i-1] = std::stof(vertex_data.at(i));
 			}
@@ -49,13 +49,16 @@ int ObjParser::Parse()
 				if (index < 0) {
 					index += vertexes.size();
 				}
+				else {
+					index -= 1;
+				}
 				indexes.push_back(index);
 			}
 			for (int i = 0; i < indexes.size()-2; i++) {
 				face face;
-				face.vertexes[0] = vertexes[indexes[0]];
-				face.vertexes[1] = vertexes[indexes[i+1]];
-				face.vertexes[2] = vertexes[indexes[i+2]];
+				face.vertexes[0] = vertexes[indexes.at(0)];
+				face.vertexes[1] = vertexes[indexes.at(i + 1)];
+				face.vertexes[2] = vertexes[indexes.at(i + 2)];
 				faces.push_back(face);
 			}
 		}
@@ -76,7 +79,7 @@ std::vector<std::string> ObjParser::Split(const std::string& s, char delimiter)
 	std::istringstream tokenStream(s);
 	while (std::getline(tokenStream, token, delimiter))
 	{
-		if (std::isdigit(token[0]) || std::isalpha(token[0]) || token == "-") {
+		if (std::isdigit(token[0]) || std::isalpha(token[0]) || token[0] == '-') {
 			tokens.push_back(token);
 		}
 	}
@@ -97,6 +100,32 @@ ReadObj::~ReadObj()
 
 void ReadObj::DrawScene()
 {
+	parser->Parse();
 
+	float x_center = width / 2;
+	float y_center = height / 2;
+	float radius = std::min(x_center, y_center) - 40.0;
+
+
+	for (auto face : parser->GetFaces())
+	{
+		DrawLine(static_cast<unsigned short>(x_center + radius * face.vertexes[0].x),
+			static_cast<unsigned short>(y_center + radius * face.vertexes[0].y),
+			static_cast<unsigned short>(x_center + radius * face.vertexes[1].x),
+			static_cast<unsigned short>(y_center + radius * face.vertexes[1].y),
+			color(255, 0, 0));
+
+		DrawLine(static_cast<unsigned short>(x_center + radius * face.vertexes[1].x),
+			static_cast<unsigned short>(y_center + radius * face.vertexes[1].y),
+			static_cast<unsigned short>(x_center + radius * face.vertexes[2].x),
+			static_cast<unsigned short>(y_center + radius * face.vertexes[2].y),
+			color(0, 255, 0));
+
+		DrawLine(static_cast<unsigned short>(x_center + radius * face.vertexes[2].x),
+			static_cast<unsigned short>(y_center + radius * face.vertexes[2].y),
+			static_cast<unsigned short>(x_center + radius * face.vertexes[0].x),
+			static_cast<unsigned short>(y_center + radius * face.vertexes[0].y),
+			color(0, 0, 255));
+	}
 }
 

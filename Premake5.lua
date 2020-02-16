@@ -67,7 +67,7 @@ group "02. Color space"
       links "Color space lib"
       debugargs { "--benchmark-samples", "25" }
 
-     ]] 
+     
 
 group "03. Draw line"
    project "Draw line lib"
@@ -94,8 +94,8 @@ group "03. Draw line"
       links "Draw line lib"
       debugargs { "--benchmark-samples", "25" }
 
+      ]]
 
---[[
 group "04. Read obj"
    project "Read obj lib"
       kind "StaticLib"
