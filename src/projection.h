@@ -11,5 +11,6 @@ public:
 	virtual ~Projection();
 
 	void DrawScene();
+	void DrawTriangle(float4[3], color);
 
 };
