@@ -122,31 +122,31 @@ group "04. Read obj"
       debugargs { "--benchmark-samples", "25" }
 --[[
    ]]
-group "05. Projection"
-   project "Projection lib"
-      kind "StaticLib"
-      includedirs { "src/" }
-      includedirs { "lib/stb" }
-      includedirs { "lib/linalg"}
-      files { "lib/stb/stb_image_write.h", "lib/linalg/linalg.h",  "src/structs.h", "src/black_image.h", "src/black_image.cpp", "src/color_space.h", "src/color_space.cpp", "src/draw_line.h", "src/draw_line.cpp", "src/read_obj.h", "src/read_obj.cpp", "src/projection.h", "src/projection.cpp" }
+-- group "05. Projection"
+--    project "Projection lib"
+--       kind "StaticLib"
+--       includedirs { "src/" }
+--       includedirs { "lib/stb" }
+--       includedirs { "lib/linalg"}
+--       files { "lib/stb/stb_image_write.h", "lib/linalg/linalg.h",  "src/structs.h", "src/black_image.h", "src/black_image.cpp", "src/color_space.h", "src/color_space.cpp", "src/draw_line.h", "src/draw_line.cpp", "src/read_obj.h", "src/read_obj.cpp", "src/projection.h", "src/projection.cpp" }
       
-   project "Projection app"
-      kind "ConsoleApp"
-      includedirs { "src" }
-      includedirs { "lib/linalg"}
-      links "Projection lib"
-      files { "src/projection_main.cpp" }
+--    project "Projection app"
+--       kind "ConsoleApp"
+--       includedirs { "src" }
+--       includedirs { "lib/linalg"}
+--       links "Projection lib"
+--       files { "src/projection_main.cpp" }
 
-   project "Projection tests"
-      kind "ConsoleApp"
-      includedirs { "src" }
-      includedirs { "lib/stb" }
-      includedirs { "lib/linalg"}
-      includedirs { "lib/catch2/single_include/catch2" }
-      files { "lib/stb/stb_image.h", "tests/utils.h", "tests/projection_tests.cpp" }
-      links "Projection lib"
-      debugargs { "--benchmark-samples", "25" }
---[[
+--    project "Projection tests"
+--       kind "ConsoleApp"
+--       includedirs { "src" }
+--       includedirs { "lib/stb" }
+--       includedirs { "lib/linalg"}
+--       includedirs { "lib/catch2/single_include/catch2" }
+--       files { "lib/stb/stb_image.h", "tests/utils.h", "tests/projection_tests.cpp" }
+--       links "Projection lib"
+--       debugargs { "--benchmark-samples", "25" }
+
 group "06. Triangle rasterization"
    project "Triangle rasterization lib"
       kind "StaticLib"
