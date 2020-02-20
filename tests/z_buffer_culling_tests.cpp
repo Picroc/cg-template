@@ -16,5 +16,7 @@ TEST_CASE("Triangle rasterization test") {
         image->DrawScene();
     };
 
+    std::cout << "HELLO " << image->GetFrameBuffer().size() << " ";
+
     REQUIRE(validate_framebuffer("references/z_buffer_cuilling.png", image->GetFrameBuffer()));
 }

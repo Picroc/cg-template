@@ -147,31 +147,31 @@ group "04. Read obj"
 --       links "Projection lib"
 --       debugargs { "--benchmark-samples", "25" }
 
-group "06. Triangle rasterization"
-   project "Triangle rasterization lib"
-      kind "StaticLib"
-      includedirs { "src/" }
-      includedirs { "lib/stb" }
-      includedirs { "lib/linalg"}
-      files { "lib/stb/stb_image_write.h", "lib/linalg/linalg.h",  "src/structs.h", "src/black_image.h", "src/black_image.cpp", "src/color_space.h", "src/color_space.cpp", "src/draw_line.h", "src/draw_line.cpp", "src/read_obj.h", "src/read_obj.cpp", "src/projection.h", "src/projection.cpp", "src/triangle_rasterization.h", "src/triangle_rasterization.cpp" }
+-- group "06. Triangle rasterization"
+--    project "Triangle rasterization lib"
+--       kind "StaticLib"
+--       includedirs { "src/" }
+--       includedirs { "lib/stb" }
+--       includedirs { "lib/linalg"}
+--       files { "lib/stb/stb_image_write.h", "lib/linalg/linalg.h",  "src/structs.h", "src/black_image.h", "src/black_image.cpp", "src/color_space.h", "src/color_space.cpp", "src/draw_line.h", "src/draw_line.cpp", "src/read_obj.h", "src/read_obj.cpp", "src/projection.h", "src/projection.cpp", "src/triangle_rasterization.h", "src/triangle_rasterization.cpp" }
       
-   project "Triangle rasterization app"
-      kind "ConsoleApp"
-      includedirs { "src" }
-      includedirs { "lib/linalg"}
-      links "Triangle rasterization lib"
-      files { "src/triangle_rasterization_main.cpp" }
+--    project "Triangle rasterization app"
+--       kind "ConsoleApp"
+--       includedirs { "src" }
+--       includedirs { "lib/linalg"}
+--       links "Triangle rasterization lib"
+--       files { "src/triangle_rasterization_main.cpp" }
 
-   project "Triangle rasterization tests"
-      kind "ConsoleApp"
-      includedirs { "src" }
-      includedirs { "lib/stb" }
-      includedirs { "lib/linalg"}
-      includedirs { "lib/catch2/single_include/catch2" }
-      files { "lib/stb/stb_image.h", "tests/utils.h", "tests/triangle_rasterization_tests.cpp" }
-      links "Triangle rasterization lib"
-      debugargs { "--benchmark-samples", "25" }
---[[
+--    project "Triangle rasterization tests"
+--       kind "ConsoleApp"
+--       includedirs { "src" }
+--       includedirs { "lib/stb" }
+--       includedirs { "lib/linalg"}
+--       includedirs { "lib/catch2/single_include/catch2" }
+--       files { "lib/stb/stb_image.h", "tests/utils.h", "tests/triangle_rasterization_tests.cpp" }
+--       links "Triangle rasterization lib"
+--       debugargs { "--benchmark-samples", "25" }
+
 group "07. Z-buffer culling"
    project "Z buffer culling lib"
       kind "StaticLib"
@@ -196,7 +196,7 @@ group "07. Z-buffer culling"
       files { "lib/stb/stb_image.h", "tests/utils.h", "tests/z_buffer_culling_tests.cpp" }
       links "Z buffer culling lib"
       debugargs { "--benchmark-samples", "25" }
-
+--[[
 group "08. Phong model"
    project "Phong model lib"
       kind "StaticLib"

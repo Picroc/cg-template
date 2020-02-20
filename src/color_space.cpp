@@ -25,6 +25,9 @@ void ColorSpace::DrawScene()
 
 void ColorSpace::SetPixel(unsigned short x, unsigned short y, color color)
 {
+	if (x > width || y > height) {
+		return;
+	}
 	frame_buffer[y * width + x] = color;
 }
 

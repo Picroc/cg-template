@@ -26,10 +26,14 @@ bool validate_framebuffer(std::string reference_file, std::vector<color> frame_b
     }
 
     // Compare with a frame buffer
+    std::cout << reference.size() << " " << frame_buffer.size() << "\n";
     bool result = (reference.size() == frame_buffer.size());
     for (unsigned int i = 0; i < 1920 * 1080; i++)
     {
         result &= (reference[i] == frame_buffer[i]);
+        if (!(reference[i] == frame_buffer[i])) {
+            std::cout << "BAD " << reference[i].r << ";" << reference[i].g << ";" << reference[i].b << " != " << frame_buffer[i].r << ";" << frame_buffer[i].g << ";" << frame_buffer[i].b << "\n";
+        }
     }
 
     return result;
